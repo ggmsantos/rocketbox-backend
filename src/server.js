@@ -11,7 +11,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 io.on('connection', socket => {
-  Socket.on('connectRoom', box => {
+  socket.on('connectRoom', box => {
     socket.join(box);
   });
 });
@@ -36,4 +36,4 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')));
 
 app.use(require('./routes'));
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3001);
